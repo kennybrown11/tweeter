@@ -1,0 +1,66 @@
+article  {
+  margin: 0 2em;
+  border: 1px solid #D0D0D0;
+  border-radius: 8px;
+  margin-top: 2em;
+  opacity: .8;
+}
+
+article header {
+  height: 100%;
+  width: 100%;
+  background-color: #eee;
+  padding: 10px;
+  margin: 0;
+  border-radius: 8px 8px 0px 0px
+} 
+
+article footer {
+  margin: auto;
+  border-bottom: 1px; color: black;
+  margin-top: 2px; 
+  background-color: white;
+  height: 35px;
+  padding: 5px;
+  border-top: 1px solid grey;
+  border-radius: 0px 0px 8px 8px;
+  
+}
+
+article p {
+  margin: 2em;
+  border-bottom: 1px; color: black;
+  margin-top: 2px; 
+  background-color: white;
+  margin: auto;
+  height: 80px;
+  padding: 20px;
+}
+
+article header img {
+  float: left;
+  height: 30px;
+  width: 25px;
+  border: 1px solid grey;
+}
+
+article header h2 {
+  margin: 0;
+  padding-left: 10%;
+}
+
+article:hover {
+  color: black;
+  opacity: 1;
+} 
+
+article i {
+  float: right;
+  opacity: 0;
+}
+
+article:hover i {
+  opacity: 1;
+  color: #00a087;
+  padding: 2px;
+}

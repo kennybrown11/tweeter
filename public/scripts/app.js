@@ -73,9 +73,8 @@ function createTweetElement(tweet) {
   const $handle = $("<p3>").text(tweet.user.handle);
   const $name = $("<h2>").text(tweet.user.name);
   const $p = $("<p>").text(tweet.content.text)
-
   const $footer = $("<footer>");
-  const $p1 = $("<p1>").text()
+  const $p1 = $("<p1>").addClass("post-date").text(moment(tweet.created_at).fromNow());
   const $p2 = $("<p2>")
   const $icon1 = $("<i>").addClass("fas fa-heart");
   const $icon2 = $("<i>").addClass("fas fa-flag");

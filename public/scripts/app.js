@@ -47,15 +47,21 @@ function loadTweets() {
 }
 
 $(document).ready(function() {
+  //  ==== Compose button toggle ====
+  $(".compose").on("click", () => {
+    $(".new-tweet").slideToggle(600);
+    $("#tweetPost").focus();
+  })
+
+  //   ===== Submit Tweet ======
   $("#tweetForm").on("submit", function(event) {
     event.preventDefault();
     let tweetPost = $("#tweetPost")
     let tweetData = $("#tweetForm").serialize();
   if (tweetPost.val().length === 0) {
-    alert("Cannot post empty field")
-
+    alert("Cannot post empty field");
   } else if (tweetPost.val().length > 140)
-      alert("140 character limit, please edit your post.")  
+      alert("140 character limit, please edit your post.");
     else {
     $.ajax({
       type: "POST",
@@ -66,6 +72,7 @@ $(document).ready(function() {
   }
   })
 });
+
 
 
 

@@ -8,7 +8,7 @@ const bodyParser    = require("body-parser");
 const app           = express();
 const normailize    = require("normalize");
 const MongoClient   = require("mongodb").MongoClient;
-const MONGODB_URI   = "mongodb://localhost:27017/tweeter";
+const MONGODB_URI   = "mongodb://localhost:27017/tweeter2";
 
 
 // ===== app.use(moment()); =====

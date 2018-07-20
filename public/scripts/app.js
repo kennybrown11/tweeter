@@ -11,10 +11,11 @@
 
 // ===== Renders and prepends to container =====
 function renderTweets(tweets) {
+  $(".tweet-container").empty();
 //loops through 'tweets'
   tweets.forEach(function(tweet){
+    //calls createTweetElement for each tweet
     let tweetData = createTweetElement(tweet);
-//calls createTweetElement for each tweet
     $(".tweet-container").prepend(tweetData);
   });
 }
@@ -64,9 +65,9 @@ $(document).ready(function() {
   $("#tweetForm").on("submit", function(event) {
     event.preventDefault();
     let tweetPost = $("#tweetPost");
-    let tweetData = $("#tweetForm").serialize();
+    let tweetData = $("#tweetPost").serialize();
 
-  // ===== Validates compose tweet =====  
+  // ===== Validates composed tweet =====  
   if (tweetPost.val().length === 0) {
     $(".new-tweet p2").text("Cannot post empty Tweet!")
   } else if (tweetPost.val().length > 140)

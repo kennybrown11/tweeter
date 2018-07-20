@@ -6,7 +6,7 @@ $(document).ready(function() {
   if (tweetCount.text() < 0) {
     tweetCount.addClass('overtext')
     } else if (tweetCount.text() > 0) {
-      tweetCount.removeClass('overtext')
+      tweetCount.removeClass('overtext');
     }
   });
 });

@@ -9,17 +9,17 @@
 
 
 
-
+// ===== Renders and prepends to container =====
 function renderTweets(tweets) {
-  //loops through 'tweets'
-    tweets.forEach(function(tweet){
-      let tweetData = createTweetElement(tweet);
-  //calls createTweetElement for each tweet
-      $(".tweet-container").prepend(tweetData);
-    });
-  }
+//loops through 'tweets'
+  tweets.forEach(function(tweet){
+    let tweetData = createTweetElement(tweet);
+//calls createTweetElement for each tweet
+    $(".tweet-container").prepend(tweetData);
+  });
+}
 
-  //===== Creates 
+// ===== Creates new tweet =====
 function createTweetElement(tweet) {
   const $tweet = $("<article>").addClass("tweet");
   const $header = $("<header>")
@@ -34,21 +34,28 @@ function createTweetElement(tweet) {
   const $icon2 = $("<i>").addClass("fas fa-flag");
   const $icon3 = $("<i>").addClass("fas fa-retweet");
 
-  $($footer).append($p1, $p2, $icon1, $icon2, $icon3)
-  $($header).append($avatar, $handle, $name)
-  $($tweet).append($header, $p, $footer)
+  $($footer).append($p1, $p2, $icon1, $icon2, $icon3);
+  $($header).append($avatar, $handle, $name);
+  $($tweet).append($header, $p, $footer);
 
   return $tweet;
+};
 
- };
-
+// ===== Ajax request to load new tweets =====
 function loadTweets() {
   $.get("/tweets").done(renderTweets)
-}
+  $("#tweetPost").val('');
+  $("span.counter").text(140);
+  $(".new-tweet p2").text('')
 
+};
+
+// ===== Compose New Tweet =====
 $(document).ready(function() {
-  //  ==== Compose button toggle ====
-  $(".compose").on("click", () => {
+    //  ==== Compose button toggle ====
+  $(".new-tweet").hide();
+  $("#compose").on("click", () => {
+    $("#compose").show();
     $(".new-tweet").slideToggle(600);
     $("#tweetPost").focus();
   })
@@ -56,12 +63,14 @@ $(document).ready(function() {
   //   ===== Submit Tweet ======
   $("#tweetForm").on("submit", function(event) {
     event.preventDefault();
-    let tweetPost = $("#tweetPost")
+    let tweetPost = $("#tweetPost");
     let tweetData = $("#tweetForm").serialize();
+
+  // ===== Validates compose tweet =====  
   if (tweetPost.val().length === 0) {
-    alert("Cannot post empty field");
+    $(".new-tweet p2").text("Cannot post empty Tweet!")
   } else if (tweetPost.val().length > 140)
-      alert("140 character limit, please edit your post.");
+    $(".new-tweet p2").text("You must erase text before you can post")
     else {
     $.ajax({
       type: "POST",
@@ -69,17 +78,12 @@ $(document).ready(function() {
       data: tweetData,
     })  
       loadTweets();
-  }
+    }
   })
 });
 
 
-
-
-
-
-
-/*Test  driver code (temporary)
+// ===== Loads Page Previous Tweets =====
 $(document).ready(function () {
-  renderTweets(tweets);
-}); */
+  $.get("/tweets").done(renderTweets)
+}); 

@@ -7,8 +7,8 @@ This project allowed me to practice my HTML, CSS, JS, jQuery and AJAX front-end 
 
 ## Screenshots
 
-![screenshot of app in use](SS1.png)
-![screenshot of app](SS2.png)
+![screenshot of app in use](public/images/SS1.png)
+![screenshot of app](public/images/SS2.png)
 
 ## Dependencies
 
